@@ -1,0 +1,8 @@
+/*
+Needed components
+
+Ticker Name 
+current value
+previous close value 
+
+*/
