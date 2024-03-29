@@ -1,0 +1,95 @@
+
+/*------header partial-------*/
+#headerSection{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+}
+
+
+nav{
+    background-color: brown;
+    grid-column: 1/3;
+    grid-row: 2/3
+}
+
+.watchlistLogo{
+    grid-column: 3/4
+}
+
+#stockStream{
+    width: 100%;
+    background-color: pink;
+    grid-column: 1/3;
+    grid-row: 3/4;
+    display: flex;
+    /* padding: 5%;
+    margin: 5%; */
+   
+}
+
+.stockStreamItem{
+    background-color: green;
+    border: 2px solid black;
+    padding: 5%;
+    margin: 5%;
+}
+
+.stockStreamItemDetails{
+    background-color: yellow;
+    border: 2px solid black;
+}
+
+
+/*---------end of header partial-----------*/
+
+
+
+.logo{
+    display: flex;
+}
+
+
+.storyArticle{
+    background-color: lime;
+    border: 2px solid black;
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; */
+    padding: 5%;
+    margin:5%;
+}
+
+/* .storyArticle img{
+    width: 100%;
+} */
+
+#stockStories{
+    background-color: pink;
+    border: 2px solid black;
+    /* padding: 5%;
+    margin:5%; */
+}
+
+
+/* Watchlist page*/
+
+#watchlist{
+    background-color: pink;
+}
+
+#watchlistHolder{
+    background-color:lime;
+    padding: 5%;
+    margin:5%;
+}
+
+.watchlistItem{
+    background-color: yellow;
+    padding: 5%;
+    margin:5%;
+}
+
+
+
+
+
