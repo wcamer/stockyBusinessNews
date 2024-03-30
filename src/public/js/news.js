@@ -80,8 +80,8 @@ let section = document.createElement('section')
 let img = document.createElement('img')//holds story image
 let desc = document.createElement('p')// description under title
 let title = document.createElement('h2') // title under image
-let link = documen.createElement('a') // link to more if you want to know more
-
+let link = document.createElement('a') // link to more if you want to know more
+console.log("hello from new.js")
 
 
 // // componetns ="https://api.polygon.io + daily open/close + stockTicker + adjusted (this is optional) + apikey"
