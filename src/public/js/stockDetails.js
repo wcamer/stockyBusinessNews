@@ -4,6 +4,8 @@ Needed components for stock info
 daily open/close
 
 previous close
+let selectedTicker = [provided by user]
+let tickersUrl = `https://api.polygon.io/v3/reference/tickers?ticker=${selectedTicker}&active=true&apiKey=b7VVurJtA8Yn_G0_61TUsj0wJynF3w0y`
 
 Ticker details v3: the response will be na object 
 /v3/reference/tickers/{ticker}
@@ -64,6 +66,11 @@ example response
 
 
 Ticker news
+let tickerNewsResponse = `https://api.polygon.io/v2/reference/news?ticker=${tickerName}&apiKey=b7VVurJtA8Yn_G0_61TUsj0wJynF3w0y`
+let tickerNew = tickerNewsResponse.Results //this has all the news related to the ticker
+
+
+
 
 Results example
 {
@@ -164,5 +171,209 @@ Results example
 
 
 */
+import { loadHeaderFooter } from "./utilities.mjs"
+loadHeaderFooter()
 
-console.log("Hello from the stocksdeals.js")
+
+let selectedTicker = document.querySelector("#selectedStock")
+// = [provided by user]
+//check if all caps and no numbers
+let searchStockButton = document.querySelector("#selectedStockButton")
+searchStockButton.addEventListener("click",() =>{
+    let sTFormatted = selectedTicker.value.toUpperCase()
+    // console.log(selectedTicker.value)
+    console.log(sTFormatted)
+    resetDetailsAndNews()
+    getTicker(sTFormatted)
+
+})
+
+// console.log()s
+
+function resetDetailsAndNews() {
+   
+    let details = document.querySelectorAll(".stockDetail")
+
+    if(details){
+        console.log("here are details",details)
+        for(let i = 0; i < details.length; i++){
+            details[i].remove()
+        }
+    }else{
+        console.log("nothing to remove")
+    }
+
+    let stories = document.querySelectorAll(".storyArticle")
+
+    if(stories){
+        // stories.remove()
+        console.log("here are stories",stories)
+        for(let i = 0; i < stories.length; i++){
+            stories[i].remove()
+        }
+    }
+
+  
+}
+
+async function getTicker(givenTicker){
+    resetDetailsAndNews()
+   
+    //this will get the ticker, name, locale, description, website information
+                    //https://api.polygon.io/v3/reference/tickers?ticker=${giventicker}&active=true&apiKey=b7VVurJtA8Yn_G0_61TUsj0wJynF3w0y
+                    //https://api.polygon.io/v3/reference/tickers/${givenTicker}?apiKey=b7VVurJtA8Yn_G0_61TUsj0wJynF3w0y
+    // let tickersUrl = `https://api.polygon.io/v3/reference/tickers?ticker=${givenTicker}&active=true&apiKey=b7VVurJtA8Yn_G0_61TUsj0wJynF3w0y`
+    let tickersUrl = `https://api.polygon.io/v3/reference/tickers/${givenTicker}?apiKey=b7VVurJtA8Yn_G0_61TUsj0wJynF3w0y`
+    let tickerInfo
+    await fetch(tickersUrl)
+        .then( async function(response) {
+            console.log(response)
+            const reqData =  await response.json();// const data =  await response.json();
+            tickerInfo = reqData
+
+        })
+
+    let tickerData = tickerInfo.results.ticker
+    let nameData = tickerInfo.results.name
+    let localeData = tickerInfo.results.locale
+    let descriptionData = tickerInfo.results.description
+    let websiteData = tickerInfo.results.homepage_url
+
+
+
+    let ticker = document.createElement('p')
+    let name = document.createElement('p')
+    let locale = document.createElement('p')
+    let description = document.createElement('p')
+    let website = document.createElement('a')
+
+    ticker.innerHTML = tickerData
+    name.innerHTML = nameData
+    locale.innerHTML = localeData
+    description.innerHTML = descriptionData
+    website.setAttribute("href", websiteData)
+    website.innerHTML = `<p>${websiteData}</p>`
+
+   
+
+    //this gets the daily open and close
+                //https://api.polygon.io/v3/reference/tickers/PRG?apiKey=b7VVurJtA8Yn_G0_61TUsj0wJynF3w0y
+    let docUrl = `https://api.polygon.io/v1/open-close/${givenTicker}/2024-04-03?adjusted=true&apiKey=b7VVurJtA8Yn_G0_61TUsj0wJynF3w0y`
+    let docData
+    await fetch(docUrl)
+        .then( async function(response) {
+            console.log(response)
+            const reqData =  await response.json();// const data =  await response.json();
+            docData = reqData
+
+        })
+    let high = document.createElement('p')
+    let low = document.createElement('p')
+    let close = document.createElement('p')
+
+    high.innerHTML = docData.high
+    low.innerHTML = docData.open
+    close.innerHTML = docData.close
+
+
+    //put all the information together
+    let stockDetails = document.querySelector("#stockDetails")
+
+    let listSections = ["Ticker","Name","Locale","Daily High","Daily Low","Close","Description","Website"]
+    let list = [ticker,name,locale,high,low,close,description,website]
+    for(let i = 0; i < list.length; i++){
+        console.log("here is the section header...",listSections[i],"\nHere is the section data...",list[i])
+        let sec = document.createElement("section")
+        sec.classList.add("stockDetail")
+        let h3 = document.createElement("h3")
+        h3.innerHTML = listSections[i]
+        sec.appendChild(h3)
+        sec.appendChild(list[i])
+        stockDetails.appendChild(sec)
+
+         
+
+    }
+    
+    
+
+
+    
+    //put all the information together
+    // let stockDetails = document.querySelector("#stockDetails")
+    // stockDetails.appendChild(ticker)
+    // stockDetails.appendChild(name)
+    // stockDetails.appendChild(locale)
+    // stockDetails.appendChild(high)
+    // stockDetails.appendChild(open)
+    // stockDetails.appendChild(close)
+    // stockDetails.appendChild(description)
+    // stockDetails.appendChild(website)
+
+
+
+    //ticker news
+                       //https://api.polygon.io/v3/reference/tickers/PRG?apiKey=b7VVurJtA8Yn_G0_61TUsj0wJynF3w0y
+    let tickerNewsUrl = `https://api.polygon.io/v2/reference/news?ticker=${givenTicker}&apiKey=b7VVurJtA8Yn_G0_61TUsj0wJynF3w0y`
+    //let tickerNew = tickerNewsResponse.Results //this has all the news related to the ticker
+    let tickerNews
+    await fetch(tickerNewsUrl)
+    .then( async function(response) {
+        console.log(response)
+        const reqData =  await response.json();// const data =  await response.json();
+        tickerNews = reqData
+
+    })
+
+    console.log("here is tickerNews......",tickerNews)
+
+    let stockStoriesHolder = document.querySelector("#stockStories")
+
+    for(let i = 0; i < (tickerNews.results).length; i++){
+        console.log("here is tickernews.resuts....\n",tickerNews.results,"\nhere is the length...",(tickerNews.results).length)
+        let article = document.createElement('article')//single story container
+        article.classList.add("storyArticle");
+
+
+        let img = document.createElement('img')//holds story image
+        img.setAttribute("src", tickerNews.results[i].image_url)//"https://placehold.co/200x200")//"[set the image url here")
+        img.setAttribute("alt", `A photo belonging to the following story: ${tickerNews.results[i].title}`)//"[set alt for url image]")
+
+        let title = document.createElement('h4') // title under image
+        title.innerHTML =`${tickerNews.results[i].title}`
+
+        let desc = document.createElement('p')// description under title
+        desc.innerHTML = `${tickerNews.results[i].description}` //
+
+        let link = document.createElement('a') // link to more if you want to know more
+        link.setAttribute("href", `${tickerNews.results[i].article_url}`)
+        link.innerHTML = "Click here for more"
+
+        article.appendChild(img)
+        article.appendChild(title)
+        article.appendChild(desc)
+        article.appendChild(link)
+        
+        stockStoriesHolder.appendChild(article)// appends this to the 'stories' div
+
+
+    }
+
+    
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+

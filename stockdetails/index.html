@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="../../js/stockDetails.js" type="module"></script> -->
+    <script src="/src/public/js/stockDetails.js" type="module"></script>
     <link rel="stylesheet" href="/src/public/css/style.css">
     <title>Stocky Business News | Stock Details</title>
 </head>
 <body>
     <header id="headerSection">
         
-        <div class="logo">
+        <!-- <div class="logo">
             <img src="https://placehold.co/50x50">
-            <!-- <img src="../images/sbn-logo.png" alt="Stocky Business News Logo"> -->
+            <img src="../images/sbn-logo.png" alt="Stocky Business News Logo">
             <a href="/">Stocky Business News</a>
             <h1>just a placehholder for now</h1>
     
@@ -70,21 +70,101 @@
             </div>
     
         </div>
-
+ -->
 
     </header>
-    <p>This is the stock details page</p>
-    <P>######</P>
+    
+   
     
     <main>
 
-        <div id="stockDetails">
+        <div id="stockSelection">
+            <form id="selectedStockForm">
+                <fieldset>
+                    <legend>Stock Selection Form</legend>
+                    <label for="selectedStock">Enter Stock Here</label><br>
+                    <input type="text" id="selectedStock" required placeholder="ex: PROG" ><br>
+            
+                </fieldset>
+                <p>Enter a valid stock ticker in all caps</p>
+    
+            </form>
+            <div>
+                <button id="selectedStockButton">Search Stock</button>
+                
+            </div>
+    
+        
+        </div>
+
+        <div id="stockDetailsSection">
             <h2>Stock Details</h2>
-            <p>Ticker</p>
+            <div id="stockDetails">
+                <!-- <section class="stockDetail">
+                    <h3>Ticker</h3>
+                    <p>name</p>
+                </section>
+                
+                <section class="stockDetail">
+                    <p>Name</p>
+                    <p>name</p>
+               
+                </section>
+    
+                <section class="stockDetail">
+               
+                    <p>locale</p>
+                    <p>name</p>
+                  
+                </section>
+    
+                <section class="stockDetail">
+               
+                <p>Daily High</p>
+                <p>name</p>
+               
+                </section>
+    
+                <section class="stockDetail">
+                
+                <p>Daily Low</p>
+                <p>name</p>
+                
+                
+                </section>
+    
+                <section class="stockDetail">
+               
+               
+                <p>Close</p>
+                <p>name</p>
+               
+                    
+                </section>
+    
+                <section class="stockDetail">
+              
+                <p>description</p>
+                <p>name</p>
+               
+                </section>
+    
+                <section class="stockDetail">
+                
+                <p>Website</p>
+                <p>name</p>
+                </section> -->
+            </div>
+            
+<!-- 
+            
             <p>Name</p>
+            <p>Daily High</p>
+            <p>Daily Low</p>
+            <p>Close</p>
             <p>locale</p>
             <p>description</p>
-            <p>Website</p>
+            <p>Website</p> -->
 
 
 
@@ -93,40 +173,48 @@
 
 
 
-        <div id="stockStories">
-            <section>
-                <h3>Stock Stories</h3>
-            </section>
-            
-            <article class="storyArticle">
-                <div>
-                    <img src="https://placehold.co/200x200">
+        <div id="stockStoriesSection">
+            <section >
+                <h2 id="stockStoriesSectionHeader">Stock Stories</h2>
+                <div id="stockStories">
+
                 </div>
-                
-                <h4>Story title here</h4>
-                <p>Story description here and it will be great</p>
-                <a href="https://markets.businessinsider.com/news/stocks/stock-market-outlook-crash-spx-berg-recession-speculation-nvidia-short-2024-3"
-                >Click here to find out more</a>
-    
-            </article>
+            </section>
 
-            <article class="storyArticle">
-                <img src="https://placehold.co/200x200">
-                <h4>Story title here</h4>
-                <p>Story description here and it will be great</p>
-                <a href="https://markets.businessinsider.com/news/stocks/stock-market-outlook-crash-spx-berg-recession-speculation-nvidia-short-2024-3"
-                >Click here to find out more</a>
-    
-            </article>
+            <!-- <section id="stockStories"> -->
 
-            <article class="storyArticle">
-                <img src="https://placehold.co/200x200">
-                <h4>Story title here</h4>
-                <p>Story description here and it will be great</p>
-                <a href="https://markets.businessinsider.com/news/stocks/stock-market-outlook-crash-spx-berg-recession-speculation-nvidia-short-2024-3"
-                >Click here to find out more</a>
-    
-            </article>
+           
+<!--             
+                <article class="storyArticle">
+                    <div>
+                        <img src="https://placehold.co/200x200">
+                    </div>
+                    
+                    <h4>Story title here</h4>
+                    <p>Story description here and it will be great</p>
+                    <a href="https://markets.businessinsider.com/news/stocks/stock-market-outlook-crash-spx-berg-recession-speculation-nvidia-short-2024-3"
+                    >Click here to find out more</a>
+        
+                </article>
+
+                <article class="storyArticle">
+                    <img src="https://placehold.co/200x200">
+                    <h4>Story title here</h4>
+                    <p>Story description here and it will be great</p>
+                    <a href="https://markets.businessinsider.com/news/stocks/stock-market-outlook-crash-spx-berg-recession-speculation-nvidia-short-2024-3"
+                    >Click here to find out more</a>
+        
+                </article>
+
+                <article class="storyArticle">
+                    <img src="https://placehold.co/200x200">
+                    <h4>Story title here</h4>
+                    <p>Story description here and it will be great</p>
+                    <a href="https://markets.businessinsider.com/news/stocks/stock-market-outlook-crash-spx-berg-recession-speculation-nvidia-short-2024-3"
+                    >Click here to find out more</a>
+        
+                </article> -->
+            <!-- </section> -->
     
         </div>
 

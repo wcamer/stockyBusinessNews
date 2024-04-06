@@ -1,4 +1,22 @@
+/*
+    colors: 
+        #F0FFF0 (Honeydew
+        #C2E7DA (Mint Green)
+        #1A1B41 (Space Cadet)
+        #6290C3 (Silver Lake Blue)
+        #BAFF29 (Lime)
 
+*/
+
+body{
+    background-color: #f0fff0;
+
+    /* background-color: #C2E7DA;  */
+    /* background-color: #1A1B41; */
+    /* background-color: #6290C3; */
+    /* background-color: #BAFF29; */
+
+}
 /*------header partial-------*/
 #headerSection{
     display: grid;
@@ -8,88 +26,263 @@
 
 
 nav{
-    background-color: brown;
-    grid-column: 1/3;
-    grid-row: 2/3
+    background-color: #1a1b41;
+
+    /* background-color: #f0fff0; */
+    /* background-color: #C2E7DA;  */
+    /* background-color: #1A1B41; */
+    /* background-color: #6290C3; */
+    /* background-color: #BAFF29; */
+
+    grid-column: 1/4;
+    grid-row: 2/3;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    
+}
+nav a{
+    font-size: 1.3rem;
+    width: 100%;
+    
+
+    /* background-color: #f0fff0; */
+    /* background-color: #C2E7DA;  */
+    /* background-color: #1A1B41; */
+    /* background-color: #6290C3; */
+    color: #BAFF29;
+    
+}
+
+nav a:hover{
+    background-color: #BAFF29;
+    color:#1a1b41;
 }
 
 .watchlistLogo{
     grid-column: 3/4
 }
+@keyframes scroll{
+    0% {
+        transform: translateX(10%);
+
+    }
+
+
+    100%{
+        transform: translateX(-1000%);
+    }
+}
+
 
 #stockStream{
-    width: 100%;
-    background-color: pink;
-    grid-column: 1/3;
+    width: 100px;
+    grid-column: 1/4;
     grid-row: 3/4;
-    display: flex;
-    /* padding: 5%;
-    margin: 5%; */
+    display:flex;
+    
+    animation: scroll 30s infinite;
+    padding: 2%;
+    margin: 2%;
    
 }
 
 .stockStreamItem{
-    background-color: green;
+   
     border: 2px solid black;
-    padding: 5%;
-    margin: 5%;
+    padding: 2%;
+    margin: 2%;
 }
+#stockStream:hover{
+    /* background-color: black; */
+    /* animation: freeze 10s infinite; */
+    animation-play-state: paused;
+    
+}
+
 
 .stockStreamItemDetails{
-    background-color: yellow;
+    background-color: #f0fff0;
+    color: #1a1b41;
     border: 2px solid black;
+    text-align: center;
 }
 
 
+.logo{
+    grid-column: 1/4;
+    display: flex;
+}
 /*---------end of header partial-----------*/
 
 
 
-.logo{
-    display: flex;
+
+/*----------------- news page ----------------------------*/
+#newsSection{
+    background-color: #1a1b41;
+    border: solid 2px black;
 }
 
+#newsSectionHeader{
+    background-color: #c2e7da;
+    text-align: center;
+    padding: 2%;
+    margin: 2%;
+}
 
+#pageTurner{
+    background-color: #1a1b41;
+    display: flex;
+    
+}
+
+.pageTurnerButton{
+    width: 100%;
+}
+
+/*----------Story article--------*/
 .storyArticle{
-    background-color: lime;
-    border: 2px solid black;
+    background-color: #c2e7da;
+    border: 2px solid black ;
+    border-radius: 5%;
     display: grid;
     /* grid-template-columns: 1fr 1fr; */
     padding: 5%;
     margin:5%;
+    /* text-align: center; */
+    justify-content: center;
+
+  
 }
 
-/* .storyArticle img{
+
+
+.storyArticle img{
     width: 100%;
+    /* height: 200px; */
+}
+
+/*-----------------------Stock Details page --------------------------------*/
+
+/* background-color: #f0fff0; */
+/* background-color: #C2E7DA;  */
+/* background-color: #1A1B41; */
+/* background-color: #6290C3; */
+/* background-color: #BAFF29; */
+
+
+#stockSelection{
+    background-color: #1a1b41;
+    color: white;
+    border: 2px solid black;
+    margin: 2%;
+    padding: 2%;
+}
+
+
+#stockDetailsSection{
+    background-color: #BAFF29;
+    padding: 2%;
+    margin: 2%;
+    border: solid 2px black;
+}
+
+#stockDetails{
+    padding: 2%;
+    margin: 2%;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+}
+
+
+#stockDetails section{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#stockDetails section:nth-child(7){
+    display: grid;
+    grid-template-columns: 1fr;
+
+}
+
+#stockDetails section:nth-child(7) h3{
+  text-align: center;
+
+}
+
+/* #stockDetails section:nth-child(8) a{
+    color: black;
+    text-decoration: none;
 } */
 
+#stockStoriesSection{
+    background-color: #1a1b41;
+    padding: 2%;
+    margin: 2%;
+}
+
+#stockStoriesSectionHeader{
+    color: #f0fff0;
+}
+
 #stockStories{
-    background-color: pink;
+    background-color: #BAFF29;
     border: 2px solid black;
-    /* padding: 5%;
-    margin:5%; */
+    align-items: center ;
+    padding: 2%;
+    margin:2%;
 }
 
 
-/* Watchlist page*/
+
+
+/* ----------------------Watchlist page-------------------------------*/
 
 #watchlist{
-    background-color: pink;
+    background-color: #6290c3;
 }
 
 #watchlistHolder{
-    background-color:lime;
+    background-color:#1a1b41;
     padding: 5%;
     margin:5%;
+    border-radius: 2%;
 }
 
 .watchlistItem{
-    background-color: yellow;
+    background-color: #BAFF29;
     padding: 5%;
     margin:5%;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+
+.wIDataCell{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    
 }
 
 
 
+
+
+/*-----------------End of small screen 400px and below---------------------*/
+
+/*---------------------------Large Screen 401px+-----------------*/
+@media only screen and (min-width:35rem){
+
+
+
+
+
+
+
+
+}/*end of large screen media query */
 
 
