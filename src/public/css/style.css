@@ -41,11 +41,12 @@ nav{
     text-align: center;
     display: flex;
     
+    
 }
 nav a{
     font-size: 1.3rem;
     width: 100%;
-    
+    text-decoration: none;
 
     /* background-color: #f0fff0; */
     /* background-color: #C2E7DA;  */
@@ -123,6 +124,7 @@ nav a:hover{
 #newsSection{
     background-color: #1a1b41;
     border: solid 2px black;
+ 
 }
 
 #newsSectionHeader{
@@ -130,6 +132,7 @@ nav a:hover{
     text-align: center;
     padding: 2%;
     margin: 2%;
+ 
 }
 
 #pageTurner{
@@ -146,7 +149,7 @@ nav a:hover{
 .storyArticle{
     background-color: #c2e7da;
     border: 2px solid black ;
-    border-radius: 5%;
+    border-radius: 2%;
     display: grid;
     /* grid-template-columns: 1fr 1fr; */
     padding: 5%;
@@ -188,13 +191,19 @@ nav a:hover{
     margin: 2%;
     border: solid 2px black;
 }
+#stockDetailsSection h2, #stockStoriesSectionHeader{
+    text-align: center;
+}
 
 #stockDetails{
     padding: 2%;
     margin: 2%;
+    border: solid 2px black;
     /* display: grid;
     grid-template-columns: 1fr 1fr; */
 }
+
+
 
 
 #stockDetails section{
@@ -266,6 +275,7 @@ nav a:hover{
     grid-template-columns: 1fr 1fr;
     align-items: center;
     
+    
 }
 
 
@@ -276,8 +286,65 @@ nav a:hover{
 
 /*---------------------------Large Screen 401px+-----------------*/
 @media only screen and (min-width:35rem){
+    body{
+        /* background-color: pink; */
+        margin: 5% ;
+    }
+
+    nav a{
+        font-size: 2rem;
+       
+    }
+
+    /*----------News page ---------*/
+    #stories{
+        display: grid;
+        grid-template-columns:  1fr 1fr 1fr
+
+    }
+
+    /*--------------Stock Details ---------*/
+
+    #stockDetails{
+        text-align: center;
+    }
+
+   
+
+    #stockDetails section:nth-child(7) p {
+        /* background-color: pink; */
+        text-align: left;
+    }
+
+    #stockStories{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 
 
+
+
+
+    /*-------------Watchlist----------*/
+
+    #watchlistHolder{
+        /* width: 100%; */
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .watchlistItem{
+        text-align: center;
+       
+    }
+
+    .wIDataCell{
+      
+        text-align:  center;
+        
+        
+    }
+    
 
 
 
