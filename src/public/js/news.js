@@ -58,7 +58,7 @@ Needed components
 
 
 
-import { loadHeaderFooter } from "/src/public/js/utilities.mjs";
+import { loadHeaderFooter } from "/js/utilities.mjs";
 //src\public\js\utilities.js
 
 loadHeaderFooter()
