@@ -26,6 +26,9 @@ async function displayWatchlist(){
         let watchlistHolder = document.querySelector("#watchlistHolder")
         let emptyMessage = document.createElement('h2')
         emptyMessage.innerHTML = "Add up to three (3) stocks to watch"
+        emptyMessage.style.color = "White"
+        emptyMessage.style.gridColumn = "1/4"
+        emptyMessage.style.textAlign = "center"
         watchlistHolder.appendChild(emptyMessage)
 
     }
@@ -47,48 +50,157 @@ async function getDOC(tickerName){
     // the free tier of the api doesn't allow for same day info so we have to go as of yesterday
     let day = date.getDate() 
 
+    let currentDayOfTheWeek = date.getDay()
+    //IF the current day of the week is Mon, Tues, Wed, Thurs, or, Fri
+    // Sun = 0, Mon = 1 ... Sat = 7
+    if([2,3,4,5,6].includes(currentDayOfTheWeek)){
+        if( [2,3,4,5,6,7,8,9].includes(day)){
+            day = "0" + (day -1)
+            console.log("here is new day", day)
+        }
+        //if it's the first of the month we need to get the last day of the previous month
+        else if (day == 1){
+            //if the the day is Jan 1st of a year we need Dec 31 of the prev year
+            if(month == 0){
+                year -= 1
+                month = 11 
+                day = 31
+    
+            }
+            //if march 1st on a leap year (year has to be divisable by 4 and 100)
+            else if(month == 2 && (year% 4 == 0 && year % 100 == 0)){
+                console.log("leap year")
+                month -=1
+                day = 29
+            }
+            //march 1st on a non leap year
+            else if(month == 2){
+                month -=1
+                day = 28
+            }
+            // if first day of May, July, Sept, Nov
+            else if([4,6,8,10].includes(month)){
+                day = 30
+                month -=1
+    
+            }
+            //for first day of Feb, April, June, Aug, Oct, Dec (months are 0 based [jan = 0 , feb = 1])
+            else if([1,3,5,7,9,11].includes(month)){
+                day = 31
+                month -=1
+    
+            }
+        }
+        else {
+            console.log("nah we good on the day",day)
+    
+        }
 
-    if( [2,3,4,5,6,7,8,9].includes(day)){
-        day = "0" + (day -1)
-        console.log("here is new day", day)
     }
-    //if it's the first of the month we need to get the last day of the previous month
-    else if (day == 1){
-        //if the the day is Jan 1st of a year we need Dec 31 of the prev year
-        if(month == 0){
-            year -= 1
-            month = 11 
-            day = 31
+    // if the currentDayOfTheWeek is..
+    else{
+        //... if the current day is sunday...
+        if(currentDayOfTheWeek == 0){
+            //if the numeric day of the month is...
+            if( [3,4,5,6,7,8,9].includes(day)){
+                day = "0" + (day - 2)
+                console.log("here is new day", day)
+            }
+            //if it's the second day of the month we need to get the last day of the previous month
+            else if (day == 2){
+                //if the the day is Jan 1st of a year we need Dec 31 of the prev year
+                if(month == 0){
+                    year -= 1
+                    month = 11 
+                    day = 31
+        
+                }
+                //if march 1st on a leap year (year has to be divisable by 4 and 100)
+                else if(month == 2 && (year% 4 == 0 && year % 100 == 0)){
+                    console.log("leap year")
+                    month -=1
+                    day = 29
+                }
+                //march 1st on a non leap year
+                else if(month == 2){
+                    month -=1
+                    day = 28
+                }
+                // if first day of May, July, Sept, Nov
+                else if([4,6,8,10].includes(month)){
+                    day = 30
+                    month -=1
+        
+                }
+                //for first day of Feb, April, June, Aug, Oct, Dec (months are 0 based [jan = 0 , feb = 1])
+                else if([1,3,5,7,9,11].includes(month)){
+                    day = 31
+                    month -=1
+        
+                }
+                else {
+                    console.log("nah we good on the day in the 'if yesterday was a saturday' ",day)
+            
+                }
+            }
+            else {
+                console.log("nah we good on the day in the 'if yesterday was a saturday' ",day)
+        
+            }
 
         }
-        //if march 1st on a leap year (year has to be divisable by 4 and 100)
-        else if(month == 2 && (year% 4 == 0 && year % 100 == 0)){
-            console.log("leap year")
-            month -=1
-            day = 29
+        // if the currentDayOfTheWeek is Mon
+        else if (currentDayOfTheWeek == 1){
+            if( [4,5,6,7,8,9].includes(day)){
+                day = "0" + (day - 3)
+                console.log("here is new day", day)
+            }
+            //if it's the third day of the month we need to get the last day of the previous month
+            else if (day == 3){
+                //if the the day is Jan 1st of a year we need Dec 31 of the prev year
+                if(month == 0){
+                    year -= 1
+                    month = 11 
+                    day = 31
+        
+                }
+                //if march 1st on a leap year (year has to be divisable by 4 and 100)
+                else if(month == 2 && (year% 4 == 0 && year % 100 == 0)){
+                    console.log("leap year")
+                    month -=1
+                    day = 29
+                }
+                //march 1st on a non leap year
+                else if(month == 2){
+                    month -=1
+                    day = 28
+                }
+                // if first day of May, July, Sept, Nov
+                else if([4,6,8,10].includes(month)){
+                    day = 30
+                    month -=1
+        
+                }
+                //for first day of Feb, April, June, Aug, Oct, Dec (months are 0 based [jan = 0 , feb = 1])
+                else if([1,3,5,7,9,11].includes(month)){
+                    day = 31
+                    month -=1
+        
+                }
+                else {
+                    console.log("nah we good on the day in the 'if yesterday was a sunday' ",day)
+            
+                }
+            }
+            else {
+                console.log("nah we good on the day in the 'if yesterday was a sunday' ",day)
+        
+            }
         }
-        //march 1st on a non leap year
-        else if(month == 2){
-            month -=1
-            day = 28
-        }
-        // if first day of May, July, Sept, Nov
-        else if([4,6,8,10].includes(month)){
-            day = 30
-            month -=1
 
-        }
-        //for first day of Feb, April, June, Aug, Oct, Dec (months are 0 based [jan = 0 , feb = 1])
-        else if([1,3,5,7,9,11].includes(month)){
-            day = 31
-            month -=1
-
-        }
     }
-    else {
-        console.log("nah we good on the day",day)
 
-    }
+    
 
      //day.toLocaleString("default", {day: "2-digit"})
     // day -= 1
@@ -184,13 +296,13 @@ async function buildWatchlistItem(data){
 
         removeFromLocalStorage("watchlist", data)//works fine
         let stock = document.getElementById(`${data}`)
-        console.log(stock,"111111111111111")
+        // console.log(stock,"111111111111111")
         let watchlistContainer = document.querySelector("#watchlistHolder")
         //watchlistContainer.removeChild(stock)
         stock.remove()
-        console.log(stock,"1222222222222222222222")
+        // console.log(stock,"1222222222222222222222")
 
-    })
+    })// end of deleteButton eventListener
 
     watchlistItem.appendChild(tickerHolder)
     watchlistItem.appendChild(openHolder)
