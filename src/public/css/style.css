@@ -110,6 +110,16 @@ nav a:hover{
     text-align: center;
 }
 
+.stockStreamItemDetails:hover{
+    background-color: #1a1b41;
+    color: #BAFF29;
+}
+
+.stockStreamItem button:hover{
+background-color: #BAFF29;
+color: #1a1b41;
+}
+
 
 .logo{
     grid-column: 1/4;
@@ -139,6 +149,11 @@ nav a:hover{
     background-color: #1a1b41;
     display: flex;
     
+}
+
+.pageTurnerButton:hover{
+    background-color: #BAFF29;
+    color: #1a1b41;
 }
 
 .pageTurnerButton{
@@ -288,7 +303,7 @@ nav a:hover{
 @media only screen and (min-width:35rem){
     body{
         /* background-color: pink; */
-        margin: 5% ;
+        margin: 5%;
     }
 
     nav a{
